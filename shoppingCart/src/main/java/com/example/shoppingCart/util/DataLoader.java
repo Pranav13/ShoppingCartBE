@@ -1,9 +1,12 @@
 package com.example.shoppingCart.util;
 
 import com.example.shoppingCart.model.Category;
+import com.example.shoppingCart.model.ERole;
 import com.example.shoppingCart.model.Product;
+import com.example.shoppingCart.model.Role;
 import com.example.shoppingCart.repository.CategoryRepository;
 import com.example.shoppingCart.repository.ProductRepository;
+import com.example.shoppingCart.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,13 +15,17 @@ public class DataLoader {
 
     private CategoryRepository categoryRepository;
     private ProductRepository productRepository;
+    private RoleRepository roleRepository;
+
 
     @Autowired
-    public DataLoader(CategoryRepository categoryRepository ,ProductRepository productRepository){
+    public DataLoader(CategoryRepository categoryRepository, ProductRepository productRepository, RoleRepository roleRepository){
         this.categoryRepository = categoryRepository;
         this.productRepository = productRepository;
+        this.roleRepository = roleRepository;
         LoadCategory();
         LoadProduct();
+        LoadRole();
     }
 
     private void LoadCategory() {
@@ -58,5 +65,11 @@ public class DataLoader {
                 new Category((long)4,null)));
         productRepository.save(new Product((long)3,"Baguette Bread",3,"https://static.pexels.com/photos/416607/pexels-photo-416607.jpeg",
                 new Category((long)1,null)));
+    }
+
+    private void LoadRole() {
+         roleRepository.save(new Role(ERole.ROLE_ADMIN));
+        roleRepository.save(new Role(ERole.ROLE_USER));
+
     }
 }
