@@ -3,13 +3,13 @@ package com.example.shoppingCart.dto;
 import java.util.List;
 
 public class ShoppingCartItem {
-    public List<ShoppingCart> shoppingCarts;
+    public List<ShoppingCartDto> shoppingCartDtos;
 
-    public List<ShoppingCart> getShoppingCarts() {
-        return shoppingCarts;
+    public List<ShoppingCartDto> getShoppingCarts() {
+        return shoppingCartDtos;
     }
 
-    public void setShoppingCarts(List<ShoppingCart> shoppingCarts) {
-        this.shoppingCarts = shoppingCarts;
+    public void setShoppingCarts(List<ShoppingCartDto> shoppingCartDtos) {
+        this.shoppingCartDtos = shoppingCartDtos;
     }
 }

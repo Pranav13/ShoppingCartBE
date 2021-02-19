@@ -1,12 +1,9 @@
-package com.example.shoppingCart.controller;
+package com.example.shoppingCart.service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import javax.validation.Valid;
-
+import com.example.shoppingCart.exception.CategoryNotFoundException;
+import com.example.shoppingCart.exception.UserEmailExistException;
+import com.example.shoppingCart.exception.UserNameExistException;
+import com.example.shoppingCart.model.Category;
 import com.example.shoppingCart.model.ERole;
 import com.example.shoppingCart.model.Role;
 import com.example.shoppingCart.model.User;
@@ -17,8 +14,6 @@ import com.example.shoppingCart.payload.response.MessageResponse;
 import com.example.shoppingCart.repository.RoleRepository;
 import com.example.shoppingCart.repository.UserRepository;
 import com.example.shoppingCart.security.jwt.JwtUtils;
-import com.example.shoppingCart.service.AuthService;
-import com.example.shoppingCart.service.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,16 +21,21 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-@RestController
-@RequestMapping("/api/auth")
-public class AuthController {
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+@Service
+public class AuthService {
+
     @Autowired
     AuthenticationManager authenticationManager;
+
+    @Autowired
+    JwtUtils jwtUtils;
 
     @Autowired
     UserRepository userRepository;
@@ -46,18 +46,10 @@ public class AuthController {
     @Autowired
     PasswordEncoder encoder;
 
-    @Autowired
-    JwtUtils jwtUtils;
 
-    @Autowired
-    AuthService authService;
-
-    @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-
-        /*Authentication authentication = authenticationManager.authenticate(
+    public JwtResponse authenticateUser(LoginRequest loginRequest){
+        Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
 
@@ -66,17 +58,16 @@ public class AuthController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(new JwtResponse(jwt,
+        return new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),
-                roles));*/
-        JwtResponse jwtResponse = authService.authenticateUser(loginRequest);
-        return  ResponseEntity.ok(jwtResponse);
+                roles);
     }
 
-    @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+
+    public String registerUser(SignupRequest signUpRequest){
+
        /* if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
@@ -87,6 +78,19 @@ public class AuthController {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
+        }*/
+
+        /*userRepository.existsByUsername(signUpRequest.getUsername())
+                .isPresent(() -> new UserNameExistException("Username is already taken"));
+        userRepository.existsByEmail(signUpRequest.getEmail())
+                .orElseThrow(() -> new UserEmailExistException("Email is already in use!"));*/
+
+        if(userRepository.existsByUsername(signUpRequest.getUsername()).get()){
+            throw new UserNameExistException("Username is already taken");
+        }
+
+        if(userRepository.existsByEmail(signUpRequest.getEmail()).get()){
+            throw new UserEmailExistException("Email is already in use!");
         }
 
         // Create new user's account
@@ -119,10 +123,9 @@ public class AuthController {
         }
 
         user.setRoles(roles);
-        userRepository.save(user);*/
+        userRepository.save(user);
 
-        String s = authService.registerUser(signUpRequest);
+        return "User registered successfully!";
 
-        return ResponseEntity.ok(new MessageResponse(s));
     }
 }

@@ -29,42 +29,43 @@ public class DataLoader {
     }
 
     private void LoadCategory() {
-        categoryRepository.save(new Category((long) 1,"Bread"));
-        categoryRepository.save(new Category((long) 2,"Dairy"));
-        categoryRepository.save(new Category((long) 3,"Fruits"));
-        categoryRepository.save(new Category((long) 4,"Seasoning and Spices"));
-        categoryRepository.save(new Category((long) 5,"Vegetable"));
+        categoryRepository.save(new Category((long) 1,"Personal Development"));
+        categoryRepository.save(new Category((long) 2,"Literature & Fiction"));
+        categoryRepository.save(new Category((long) 3,"Fiction"));
+        categoryRepository.save(new Category((long) 4," Science Fiction"));
+        categoryRepository.save(new Category((long) 5,"Action & Adventure"));
     }
 
     private void LoadProduct(){
-        productRepository.save(new Product((long)1,"Spinach",2.5,"http://www.publicdomainpictures.net/pictures/170000/velka/spinach-leaves-1461774375kTU.jpg",
-                new Category((long)4,null)));
-        productRepository.save(new Product((long)2,"Freshly Baked Bread",3,"https://static.pexels.com/photos/2434/bread-food-healthy-breakfast.jpg",
+
+        productRepository.save(new Product((long)1,"How to Win Friends and Influence People",200,"https://m.media-amazon.com/images/I/71-V6LEZU8L._AC_UY218_.jpg",
                 new Category((long)1,null)));
-        productRepository.save(new Product((long)3,"Avacado",1.75,"https://pixnio.com/free-images/2017/03/17/2017-03-17-09-15-56.jpg",
-                new Category((long)3,null)));
-        productRepository.save(new Product((long)3,"Tomato",2.5,"https://static.pexels.com/photos/8390/food-wood-tomatoes.jpg",
-                new Category((long)4,null)));
-        productRepository.save(new Product((long)3,"Lettuce",1,"https://upload.wikimedia.org/wikipedia/commons/7/7f/Lettuce_Mini_Heads_%287331119710%29.jpg",
-                new Category((long)4,null)));
-        productRepository.save(new Product((long)3,"Cauliflower",1.75,"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cauliflowers_-_20051021.jpg/1280px-Cauliflowers_-_20051021.jpg",
-                new Category((long)4,null)));
-        productRepository.save(new Product((long)3,"Banana",1.25,"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Bananas.jpg/1024px-Bananas.jpg",
-                new Category((long)3,null)));
-        productRepository.save(new Product((long)3,"Orange",1.7,"https://upload.wikimedia.org/wikipedia/commons/c/c4/Orange-Fruit-Pieces.jpg",
-                new Category((long)3,null)));
-        productRepository.save(new Product((long)3,"Apple",2,"https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg",
-                new Category((long)3,null)));
-        productRepository.save(new Product((long)3,"Grape",2,"https://upload.wikimedia.org/wikipedia/commons/3/36/Kyoho-grape.jpg",
-                new Category((long)3,null)));
-        productRepository.save(new Product((long)3,"Peach",2,"https://upload.wikimedia.org/wikipedia/commons/9/9e/Autumn_Red_peaches.jpg",
-                new Category((long)3,null)));
-        productRepository.save(new Product((long)3,"Cinnamon Sticks",2,"https://upload.wikimedia.org/wikipedia/commons/8/8c/Cinnamon-other.jpg",
-                new Category((long)4,null)));
-        productRepository.save(new Product((long)3,"Saffron",3,"https://upload.wikimedia.org/wikipedia/commons/4/48/Saffron_Crop.JPG",
-                new Category((long)4,null)));
-        productRepository.save(new Product((long)3,"Baguette Bread",3,"https://static.pexels.com/photos/416607/pexels-photo-416607.jpeg",
+        productRepository.save(new Product((long)2,"Rich Dad Poor Dad",3,"https://m.media-amazon.com/images/I/81bsw6fnUiL._AC_UY218_.jpg",
                 new Category((long)1,null)));
+        productRepository.save(new Product((long)3,"The Power of Your Subconscious Mind",1.75,"https://m.media-amazon.com/images/I/51nwRlrvCsL.jpg",
+                new Category((long)1,null)));
+        productRepository.save(new Product((long)4,"The Great Gatsby",100,"https://m.media-amazon.com/images/I/81TM6L3fUzL._AC_UY218_.jpg",
+                new Category((long)2,null)));
+        productRepository.save(new Product((long)5,"Origin",235,"https://m.media-amazon.com/images/I/91CqIAD4WpL._AC_UY218_.jpg",
+                new Category((long)3,null)));
+        productRepository.save(new Product((long)6,"The Theory of Everything",1.75,"https://images-na.ssl-images-amazon.com/images/I/51oHUvYzbsL._SX327_BO1,204,203,200_.jpg",
+                new Category((long)3,null)));
+        productRepository.save(new Product((long)7,"The Search Begins",150,"https://images-na.ssl-images-amazon.com/images/I/41kI2hfnIbL._SX311_BO1,204,203,200_.jpg",
+                new Category((long)4,null)));
+        productRepository.save(new Product((long)8,"The Time Machine",140,"https://images-na.ssl-images-amazon.com/images/I/51CYYxY3riL._SX320_BO1,204,203,200_.jpg",
+                new Category((long)4,null)));
+        productRepository.save(new Product((long)9,"Touched",2,"https://m.media-amazon.com/images/I/41cNaJZio9L.jpg",
+                new Category((long)5,null)));
+        productRepository.save(new Product((long)10,"Harry Potter and the Prisoner of Azkaban",350,"https://images-na.ssl-images-amazon.com/images/I/41PIRVVOoPL._SX400_BO1,204,203,200_.jpg",
+                new Category((long)5,null)));
+        /*productRepository.save(new Product((long)11,"Peach",2,"https://upload.wikimedia.org/wikipedia/commons/9/9e/Autumn_Red_peaches.jpg",
+                new Category((long)3,null)));
+        productRepository.save(new Product((long)12,"Cinnamon Sticks",2,"https://upload.wikimedia.org/wikipedia/commons/8/8c/Cinnamon-other.jpg",
+                new Category((long)4,null)));
+        productRepository.save(new Product((long)13,"Saffron",3,"https://upload.wikimedia.org/wikipedia/commons/4/48/Saffron_Crop.JPG",
+                new Category((long)4,null)));
+        productRepository.save(new Product((long)14,"Baguette Bread",3,"https://static.pexels.com/photos/416607/pexels-photo-416607.jpeg",
+                new Category((long)1,null)));*/
     }
 
     private void LoadRole() {

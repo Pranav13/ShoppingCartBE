@@ -1,9 +1,7 @@
 package com.example.shoppingCart.controller;
 
 import com.example.shoppingCart.dto.Item;
-import com.example.shoppingCart.dto.ProductRequest;
-import com.example.shoppingCart.dto.ShoppingCartItem;
-import com.example.shoppingCart.model.ShoppingCart;
+import com.example.shoppingCart.dto.ShoppingCartDto;
 import com.example.shoppingCart.service.ShoppingCartProductService;
 import com.example.shoppingCart.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,23 +22,17 @@ public class ShoppingCartController {
     ShoppingCartProductService cartProductService;
 
     @PostMapping
-    public ResponseEntity<ShoppingCart> save() {
+    public ResponseEntity<ShoppingCartDto> save() {
         return status(HttpStatus.CREATED).body(shoppingCartService.save());
     }
 
-    /*@PostMapping
-    public ResponseEntity<ShoppingCart> saveProduct(ShoppingCartItem shoppingCartItem){
-        //CartProductService.save()
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }*/
-
     @GetMapping("/{cartId}")
-    public com.example.shoppingCart.dto.ShoppingCart getItem(@PathVariable Long cartId){
+    public ShoppingCartDto getItem(@PathVariable Long cartId){
         return cartProductService.findPProductByCartId(cartId);
     }
 
     @PutMapping("/{cartId}/{operationNumber}")
-    public  com.example.shoppingCart.dto.ShoppingCart addTocart(@PathVariable long cartId, @PathVariable Integer operationNumber ,@RequestBody Item item){
+    public ShoppingCartDto addTocart(@PathVariable long cartId, @PathVariable Integer operationNumber , @RequestBody Item item){
         return cartProductService.save(cartId,operationNumber,item);
     }
 

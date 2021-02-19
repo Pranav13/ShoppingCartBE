@@ -1,7 +1,6 @@
 package com.example.shoppingCart.controller;
 
 import com.example.shoppingCart.dto.CategoryResponse;
-import com.example.shoppingCart.dto.ProductResponse;
 import com.example.shoppingCart.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -11,6 +11,7 @@ import com.example.shoppingCart.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -24,6 +25,7 @@ public class ProductService {
     @Autowired
     CategoryRepository categoryRepository;
 
+    @Transactional
     public void save(ProductRequest productRequest){
         Product product = new Product();
         Category category = categoryRepository.findById(Long.parseLong(productRequest.getCategory()))
@@ -70,7 +72,7 @@ public class ProductService {
         if(productRepository.findById(product.getId()).isPresent()){
             return getProductResponse(productRepository.save(product));
         }else{
-            throw new ProductNotFoundException("No Book found with book id"+product.getId());
+            throw new ProductNotFoundException("No Product found with book id"+product.getId());
         }
     }
 
