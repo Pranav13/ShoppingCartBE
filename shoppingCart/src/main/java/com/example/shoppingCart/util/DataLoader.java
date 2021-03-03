@@ -1,9 +1,6 @@
 package com.example.shoppingCart.util;
 
-import com.example.shoppingCart.model.Category;
-import com.example.shoppingCart.model.ERole;
-import com.example.shoppingCart.model.Product;
-import com.example.shoppingCart.model.Role;
+import com.example.shoppingCart.model.*;
 import com.example.shoppingCart.repository.CategoryRepository;
 import com.example.shoppingCart.repository.ProductRepository;
 import com.example.shoppingCart.repository.RoleRepository;
@@ -17,18 +14,18 @@ public class DataLoader {
     private ProductRepository productRepository;
     private RoleRepository roleRepository;
 
-
     @Autowired
     public DataLoader(CategoryRepository categoryRepository, ProductRepository productRepository, RoleRepository roleRepository){
         this.categoryRepository = categoryRepository;
         this.productRepository = productRepository;
         this.roleRepository = roleRepository;
-        LoadCategory();
-        LoadProduct();
-        LoadRole();
+
+        loadCategory();
+        loadProduct();
+        loadRole();
     }
 
-    private void LoadCategory() {
+    private void loadCategory() {
         categoryRepository.save(new Category((long) 1,"Personal Development"));
         categoryRepository.save(new Category((long) 2,"Literature & Fiction"));
         categoryRepository.save(new Category((long) 3,"Fiction"));
@@ -36,7 +33,7 @@ public class DataLoader {
         categoryRepository.save(new Category((long) 5,"Action & Adventure"));
     }
 
-    private void LoadProduct(){
+    private void loadProduct(){
 
         productRepository.save(new Product((long)1,"How to Win Friends and Influence People",200,"https://m.media-amazon.com/images/I/71-V6LEZU8L._AC_UY218_.jpg",
                 new Category((long)1,null)));
@@ -68,9 +65,9 @@ public class DataLoader {
                 new Category((long)1,null)));*/
     }
 
-    private void LoadRole() {
-         roleRepository.save(new Role(ERole.ROLE_ADMIN));
+    private void loadRole() {
+        roleRepository.save(new Role(ERole.ROLE_ADMIN));
         roleRepository.save(new Role(ERole.ROLE_USER));
-
     }
+
 }

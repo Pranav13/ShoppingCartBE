@@ -68,23 +68,6 @@ public class AuthService {
 
     public String registerUser(SignupRequest signUpRequest){
 
-       /* if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
-        }
-
-        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: Email is already in use!"));
-        }*/
-
-        /*userRepository.existsByUsername(signUpRequest.getUsername())
-                .isPresent(() -> new UserNameExistException("Username is already taken"));
-        userRepository.existsByEmail(signUpRequest.getEmail())
-                .orElseThrow(() -> new UserEmailExistException("Email is already in use!"));*/
-
         if(userRepository.existsByUsername(signUpRequest.getUsername()).get()){
             throw new UserNameExistException("Username is already taken");
         }
