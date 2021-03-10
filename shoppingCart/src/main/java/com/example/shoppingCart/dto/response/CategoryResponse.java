@@ -1,4 +1,4 @@
-package com.example.shoppingCart.dto;
+package com.example.shoppingCart.dto.response;
 
 public class CategoryResponse {
     public String id;

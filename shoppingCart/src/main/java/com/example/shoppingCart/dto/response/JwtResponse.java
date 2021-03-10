@@ -1,4 +1,4 @@
-package com.example.shoppingCart.payload.response;
+package com.example.shoppingCart.dto.response;
 
 import java.util.List;
 

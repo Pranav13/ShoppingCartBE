@@ -1,13 +1,13 @@
-package com.example.shoppingCart.dto;
+package com.example.shoppingCart.dto.request;
 
 import lombok.Data;
 
 @Data
-public class Item{
+public class ProductRequest {
     public String id;
     public String title;
-    public double price;
+    public Integer price;
     public String category;
     public String imageurl;
-    public int quantity;
+
 }

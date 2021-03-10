@@ -4,22 +4,22 @@ import com.example.shoppingCart.model.*;
 import com.example.shoppingCart.repository.CategoryRepository;
 import com.example.shoppingCart.repository.ProductRepository;
 import com.example.shoppingCart.repository.RoleRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 @Component
+@AllArgsConstructor
 public class DataLoader {
 
     private CategoryRepository categoryRepository;
     private ProductRepository productRepository;
     private RoleRepository roleRepository;
 
-    @Autowired
-    public DataLoader(CategoryRepository categoryRepository, ProductRepository productRepository, RoleRepository roleRepository){
-        this.categoryRepository = categoryRepository;
-        this.productRepository = productRepository;
-        this.roleRepository = roleRepository;
-
+    @PostConstruct
+    private void postConstruct() {
         loadCategory();
         loadProduct();
         loadRole();

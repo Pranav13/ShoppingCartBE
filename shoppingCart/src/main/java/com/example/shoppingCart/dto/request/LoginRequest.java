@@ -1,4 +1,4 @@
-package com.example.shoppingCart.payload.request;
+package com.example.shoppingCart.dto.request;
 
 import javax.validation.constraints.NotBlank;
 

@@ -1,21 +1,17 @@
 package com.example.shoppingCart.service;
 
-import com.example.shoppingCart.exception.CategoryNotFoundException;
 import com.example.shoppingCart.exception.UserEmailExistException;
 import com.example.shoppingCart.exception.UserNameExistException;
-import com.example.shoppingCart.model.Category;
 import com.example.shoppingCart.model.ERole;
 import com.example.shoppingCart.model.Role;
 import com.example.shoppingCart.model.User;
-import com.example.shoppingCart.payload.request.LoginRequest;
-import com.example.shoppingCart.payload.request.SignupRequest;
-import com.example.shoppingCart.payload.response.JwtResponse;
-import com.example.shoppingCart.payload.response.MessageResponse;
+import com.example.shoppingCart.dto.request.LoginRequest;
+import com.example.shoppingCart.dto.request.SignupRequest;
+import com.example.shoppingCart.dto.response.JwtResponse;
 import com.example.shoppingCart.repository.RoleRepository;
 import com.example.shoppingCart.repository.UserRepository;
 import com.example.shoppingCart.security.jwt.JwtUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -29,21 +25,17 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class AuthService {
 
-    @Autowired
     AuthenticationManager authenticationManager;
 
-    @Autowired
     JwtUtils jwtUtils;
 
-    @Autowired
     UserRepository userRepository;
 
-    @Autowired
     RoleRepository roleRepository;
 
-    @Autowired
     PasswordEncoder encoder;
 
 

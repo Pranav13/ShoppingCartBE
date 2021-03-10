@@ -1,9 +1,9 @@
 package com.example.shoppingCart.service;
 
 import com.example.shoppingCart.model.Category;
-import com.example.shoppingCart.dto.CategoryResponse;
+import com.example.shoppingCart.dto.response.CategoryResponse;
 import com.example.shoppingCart.repository.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +11,9 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @Service
+@AllArgsConstructor
 public class CategoryService {
 
-    @Autowired
     CategoryRepository categoryRepository;
 
     public List<CategoryResponse> getAllCategory() {

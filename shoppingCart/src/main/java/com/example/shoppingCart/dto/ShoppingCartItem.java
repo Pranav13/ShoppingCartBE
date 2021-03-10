@@ -1,15 +1,17 @@
 package com.example.shoppingCart.dto;
 
+import com.example.shoppingCart.dto.response.ShoppingCartResponse;
+
 import java.util.List;
 
 public class ShoppingCartItem {
-    public List<ShoppingCartDto> shoppingCartDtos;
+    public List<ShoppingCartResponse> shoppingCartResponses;
 
-    public List<ShoppingCartDto> getShoppingCarts() {
-        return shoppingCartDtos;
+    public List<ShoppingCartResponse> getShoppingCarts() {
+        return shoppingCartResponses;
     }
 
-    public void setShoppingCarts(List<ShoppingCartDto> shoppingCartDtos) {
-        this.shoppingCartDtos = shoppingCartDtos;
+    public void setShoppingCarts(List<ShoppingCartResponse> shoppingCartResponses) {
+        this.shoppingCartResponses = shoppingCartResponses;
     }
 }

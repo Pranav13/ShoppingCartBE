@@ -1,14 +1,14 @@
 package com.example.shoppingCart.service;
 
-import com.example.shoppingCart.dto.ProductRequest;
-import com.example.shoppingCart.dto.ProductResponse;
+import com.example.shoppingCart.dto.request.ProductRequest;
+import com.example.shoppingCart.dto.response.ProductResponse;
 import com.example.shoppingCart.exception.CategoryNotFoundException;
 import com.example.shoppingCart.exception.ProductNotFoundException;
 import com.example.shoppingCart.model.Category;
 import com.example.shoppingCart.model.Product;
 import com.example.shoppingCart.repository.CategoryRepository;
 import com.example.shoppingCart.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -17,12 +17,11 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @Service
+@AllArgsConstructor
 public class ProductService {
 
-    @Autowired
     ProductRepository productRepository;
 
-    @Autowired
     CategoryRepository categoryRepository;
 
     @Transactional

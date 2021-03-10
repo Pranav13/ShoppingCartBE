@@ -1,10 +1,10 @@
 package com.example.shoppingCart.controller;
 
-import com.example.shoppingCart.dto.Item;
-import com.example.shoppingCart.dto.ShoppingCartDto;
+import com.example.shoppingCart.dto.request.ItemRequest;
+import com.example.shoppingCart.dto.response.ShoppingCartResponse;
 import com.example.shoppingCart.service.ShoppingCartProductService;
 import com.example.shoppingCart.service.ShoppingCartService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,27 +13,26 @@ import static org.springframework.http.ResponseEntity.status;
 
 @RestController
 @RequestMapping("/api/shopping-carts")
+@AllArgsConstructor
 public class ShoppingCartController {
 
-    @Autowired
     ShoppingCartService shoppingCartService;
 
-    @Autowired
     ShoppingCartProductService cartProductService;
 
     @PostMapping
-    public ResponseEntity<ShoppingCartDto> save() {
+    public ResponseEntity<ShoppingCartResponse> save() {
         return status(HttpStatus.CREATED).body(shoppingCartService.save());
     }
 
     @GetMapping("/{cartId}")
-    public ShoppingCartDto getItem(@PathVariable Long cartId){
+    public ShoppingCartResponse getItem(@PathVariable Long cartId){
         return cartProductService.findPProductByCartId(cartId);
     }
 
     @PutMapping("/{cartId}/{operationNumber}")
-    public ShoppingCartDto addTocart(@PathVariable long cartId, @PathVariable Integer operationNumber , @RequestBody Item item){
-        return cartProductService.save(cartId,operationNumber,item);
+    public ShoppingCartResponse addTocart(@PathVariable long cartId, @PathVariable Integer operationNumber , @RequestBody ItemRequest itemRequest){
+        return cartProductService.save(cartId,operationNumber, itemRequest);
     }
 
     @DeleteMapping("/{cartId}")

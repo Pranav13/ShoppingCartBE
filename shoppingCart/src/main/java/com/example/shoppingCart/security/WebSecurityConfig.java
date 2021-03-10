@@ -3,6 +3,7 @@ package com.example.shoppingCart.security;
 import com.example.shoppingCart.security.jwt.AuthEntryPointJwt;
 import com.example.shoppingCart.security.jwt.AuthTokenFilter;
 import com.example.shoppingCart.service.UserDetailsServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,11 +21,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@AllArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
     UserDetailsServiceImpl userDetailsService;
 
-    @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
 
     @Bean

@@ -1,8 +1,8 @@
 package com.example.shoppingCart.controller;
 
-import com.example.shoppingCart.dto.CategoryResponse;
+import com.example.shoppingCart.dto.response.CategoryResponse;
 import com.example.shoppingCart.service.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +15,9 @@ import static org.springframework.http.ResponseEntity.status;
 
 @RestController
 @RequestMapping("/api/category")
+@AllArgsConstructor
 public class CategoryController {
 
-    @Autowired
     CategoryService categoryService;
 
     @GetMapping

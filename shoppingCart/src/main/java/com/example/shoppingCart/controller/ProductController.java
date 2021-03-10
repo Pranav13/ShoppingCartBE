@@ -1,9 +1,9 @@
 package com.example.shoppingCart.controller;
 
-import com.example.shoppingCart.dto.ProductRequest;
-import com.example.shoppingCart.dto.ProductResponse;
+import com.example.shoppingCart.dto.request.ProductRequest;
+import com.example.shoppingCart.dto.response.ProductResponse;
 import com.example.shoppingCart.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +14,9 @@ import static org.springframework.http.ResponseEntity.status;
 
 @RestController
 @RequestMapping("/api/products")
+@AllArgsConstructor
 public class ProductController {
 
-    @Autowired
     ProductService productService;
 
     @PostMapping
